@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ChurchPresenter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">✦ ChurchPresenter</div>
+    <div class="status">
+      <span class="dot"></span> LIVE
+    </div>
+  </header>
+
+  <main>
+
+    <!-- LIBRARY -->
+    <aside class="library">
+      <h2>Library</h2>
+
+      <button onclick="showCategory('bible')">📖 Bible</button>
+      <button onclick="showCategory('songs')">🎵 Songs</button>
+      <button onclick="showCategory('slides')">🖼️ Slides</button>
+      <button onclick="showCategory('media')">🎬 Media</button>
+      <button onclick="showCategory('announcements')">📢 Announcements</button>
+    </aside>
+
+
+    <!-- CENTER -->
+    <section class="workspace">
+
+      <div class="section-title">
+        <h2 id="categoryTitle">Welcome</h2>
+        <input
+          type="text"
+          id="search"
+          placeholder="Search..."
+          oninput="searchItems()"
+        >
+      </div>
+
+      <div id="items" class="items">
+        <div class="welcome">
+          <h1>ChurchPresenter</h1>
+          <p>Select something from the Library.</p>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- PREVIEW -->
+    <aside class="preview">
+
+      <h2>Preview</h2>
+
+      <div id="previewScreen">
+        <h1>Preview</h1>
+        <p>Select a slide</p>
+      </div>
+
+      <button class="live-button" onclick="goLive()">
+        🔴 GO LIVE
+      </button>
+
+    </aside>
+
+  </main>
+
+
+  <!-- PLAYLIST -->
+  <footer>
+
+    <div class="playlist-title">
+      <strong>Service Playlist</strong>
+    </div>
+
+    <div id="playlist" class="playlist">
+      <div class="empty">
+        No items added
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- LIVE SCREEN -->
+  <div id="liveScreen" class="live-screen">
+
+    <button class="close-live" onclick="closeLive()">✕</button>
+
+    <div id="liveContent">
+      <h1>Live Output</h1>
+    </div>
+
+  </div>
+
+
+  <script src="app.js"></script>
+
+</body>
+</html>
