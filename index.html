@@ -3,68 +3,151 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ChurchPresenter</title>
+
+  <title>ChurchPresenter V2</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <header>
-    <div class="logo">✦ ChurchPresenter</div>
-    <div class="status">
-      <span class="dot"></span> LIVE
+  <!-- TOP BAR -->
+  <header class="topbar">
+
+    <div class="brand">
+      ✦ <strong>ChurchPresenter</strong>
+      <span>V2</span>
     </div>
+
+    <div class="service-name">
+      Sunday Service
+    </div>
+
+    <div class="live-status">
+      <span class="live-dot"></span>
+      READY
+    </div>
+
   </header>
 
-  <main>
+
+  <!-- MAIN APPLICATION -->
+
+  <main class="app">
 
     <!-- LIBRARY -->
-    <aside class="library">
-      <h2>Library</h2>
 
-      <button onclick="showCategory('bible')">📖 Bible</button>
-      <button onclick="showCategory('songs')">🎵 Songs</button>
-      <button onclick="showCategory('slides')">🖼️ Slides</button>
-      <button onclick="showCategory('media')">🎬 Media</button>
-      <button onclick="showCategory('announcements')">📢 Announcements</button>
+    <aside class="sidebar">
+
+      <h3>LIBRARY</h3>
+
+      <button class="nav-btn active" onclick="showCategory('bible')">
+        📖 Bible
+      </button>
+
+      <button class="nav-btn" onclick="showCategory('songs')">
+        🎵 Songs
+      </button>
+
+      <button class="nav-btn" onclick="showCategory('slides')">
+        🖼️ Slides
+      </button>
+
+      <button class="nav-btn" onclick="showCategory('media')">
+        🎬 Media
+      </button>
+
+      <button class="nav-btn" onclick="showCategory('announcements')">
+        📢 Announcements
+      </button>
+
+      <div class="sidebar-bottom">
+
+        <button onclick="savePlaylist()">
+          💾 Save Service
+        </button>
+
+        <button onclick="loadPlaylist()">
+          📂 Load Service
+        </button>
+
+      </div>
+
     </aside>
 
 
     <!-- CENTER -->
-    <section class="workspace">
 
-      <div class="section-title">
-        <h2 id="categoryTitle">Welcome</h2>
-        <input
-          type="text"
-          id="search"
-          placeholder="Search..."
-          oninput="searchItems()"
-        >
-      </div>
+    <section class="center">
 
-      <div id="items" class="items">
-        <div class="welcome">
-          <h1>ChurchPresenter</h1>
-          <p>Select something from the Library.</p>
+      <div class="toolbar">
+
+        <div>
+          <h2 id="categoryTitle">Bible</h2>
+          <p id="categoryDescription">
+            Search and add Scripture to your service.
+          </p>
         </div>
+
+        <input
+          id="search"
+          type="search"
+          placeholder="Search library..."
+          oninput="searchLibrary()"
+        >
+
       </div>
+
+
+      <div id="items" class="items"></div>
 
     </section>
 
 
-    <!-- PREVIEW -->
-    <aside class="preview">
+    <!-- RIGHT SIDE -->
 
-      <h2>Preview</h2>
+    <aside class="right-panel">
 
-      <div id="previewScreen">
-        <h1>Preview</h1>
-        <p>Select a slide</p>
+      <h3>PREVIEW</h3>
+
+      <div id="previewScreen" class="preview-screen">
+
+        <div class="preview-title">
+          ChurchPresenter
+        </div>
+
+        <div class="preview-subtitle">
+          Select an item
+        </div>
+
       </div>
 
-      <button class="live-button" onclick="goLive()">
+
+      <div class="preview-info">
+
+        <strong id="previewTitle">
+          Nothing selected
+        </strong>
+
+        <p id="previewText">
+          Choose something from the library.
+        </p>
+
+      </div>
+
+
+      <button
+        class="go-live"
+        onclick="goLive()"
+      >
         🔴 GO LIVE
+      </button>
+
+      <button
+        class="add-playlist"
+        onclick="addCurrentToPlaylist()"
+      >
+        ＋ Add to Service
       </button>
 
     </aside>
@@ -73,28 +156,60 @@
 
 
   <!-- PLAYLIST -->
-  <footer>
 
-    <div class="playlist-title">
-      <strong>Service Playlist</strong>
-    </div>
+  <section class="playlist-panel">
 
-    <div id="playlist" class="playlist">
-      <div class="empty">
-        No items added
+    <div class="playlist-header">
+
+      <div>
+        <strong>Service Playlist</strong>
+        <span id="playlistCount">0 items</span>
       </div>
+
+      <button onclick="clearPlaylist()">
+        Clear
+      </button>
+
     </div>
 
-  </footer>
+
+    <div
+      id="playlist"
+      class="playlist"
+    >
+
+      <div class="empty-playlist">
+        Your service playlist is empty.
+      </div>
+
+    </div>
+
+  </section>
 
 
-  <!-- LIVE SCREEN -->
-  <div id="liveScreen" class="live-screen">
+  <!-- LIVE OUTPUT -->
 
-    <button class="close-live" onclick="closeLive()">✕</button>
+  <div
+    id="liveScreen"
+    class="live-screen"
+  >
+
+    <button
+      class="close-live"
+      onclick="closeLive()"
+    >
+      ✕
+    </button>
+
 
     <div id="liveContent">
-      <h1>Live Output</h1>
+
+      <h1>ChurchPresenter</h1>
+
+      <p>
+        Live Output
+      </p>
+
     </div>
 
   </div>
